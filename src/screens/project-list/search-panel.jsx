@@ -1,9 +1,8 @@
-import React from "react";
-
 export const SearchPanel = ({ param, setParam, user }) => {
   return (
     <form>
       <div>
+        {/*  */}
         <input
           type="text"
           value={param.name}
@@ -16,18 +15,18 @@ export const SearchPanel = ({ param, setParam, user }) => {
         />
         <select
           value={param.personId}
-          onChange={(e) =>
+          onChange={(e) => {
             setParam({
               ...param,
               personId: e.target.value,
-            })
-          }
+            });
+          }}
         >
           <option key="person" value="">
             负责人
           </option>
           {user.map((user) => (
-            <option key={user.personId} value={user.personId}>
+            <option key={user.id} value={user.id}>
               {user.name}
             </option>
           ))}
