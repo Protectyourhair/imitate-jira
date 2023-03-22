@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 /**
  *用于判断一个值是否为布尔值
  排除value为0的特殊情况
@@ -18,4 +20,29 @@ export const cleanObj = (obj: { [key: string]: any }) => {
     }
   });
   return res;
+};
+
+/**
+ * 初始化hook
+ */
+export const useMount = (callback: () => void) => {
+  useEffect(() => {
+    callback();
+  }, []);
+};
+
+/**
+ * 防抖hook
+ * 减少搜索频率
+ */
+export const useDebounce = (value: string, delay: number) => {
+  const [debounceValue, setDebounceValue] = useState(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebounceValue(value), delay);
+    //销毁，只有最后一次才生效
+    return () => clearTimeout(timer);
+  }, [value, delay]);
+
+  return debounceValue;
 };
