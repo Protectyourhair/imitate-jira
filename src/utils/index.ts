@@ -36,7 +36,7 @@ export const useMount = (callback: () => void) => {
  * 防抖hook
  * 减少搜索频率
  */
-export const useDebounce = (value: ParamProps, delay: number) => {
+export const useDebounce = <T>(value: T, delay: number): T => {
   const [debounceValue, setDebounceValue] = useState(value);
 
   useEffect(() => {
