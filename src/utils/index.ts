@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ParamProps } from 'screens/project-list';
 
 /**
  *用于判断一个值是否为布尔值
@@ -35,7 +36,7 @@ export const useMount = (callback: () => void) => {
  * 防抖hook
  * 减少搜索频率
  */
-export const useDebounce = (value: string, delay: number) => {
+export const useDebounce = (value: ParamProps, delay: number) => {
   const [debounceValue, setDebounceValue] = useState(value);
 
   useEffect(() => {
