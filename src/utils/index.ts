@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { ParamProps } from 'screens/project-list';
 
 /**
  *用于判断一个值是否为布尔值
@@ -46,4 +45,29 @@ export const useDebounce = <T>(value: T, delay: number): T => {
   }, [value, delay]);
 
   return debounceValue;
+};
+
+export interface ValueProps {
+  name: string;
+  age: number;
+}
+export const useArray = <T extends ValueProps>(persons: T[]) => {
+  const [value, setValue] = useState<T[]>(persons);
+
+  const add = (obj: T) => {
+    setValue([...value, obj]);
+  };
+
+  const removeIndex = (removeIndex: number) => {
+    setValue(value.filter((el, index) => index !== removeIndex));
+  };
+  const clear = () => {
+    setValue([]);
+  };
+  return {
+    value,
+    add,
+    removeIndex,
+    clear,
+  };
 };
