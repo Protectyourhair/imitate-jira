@@ -1,8 +1,12 @@
 import { FC } from 'react';
 
 export interface User {
-  id: 'string';
-  name: 'string';
+  id: string;
+  name: string;
+  email: string;
+  title: string;
+  origanization: string;
+  token: string;
 }
 interface SearchPanelProps {
   param: {
